@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { trackClick } from "@/lib/firebase";
 
 const links = [
   { href: "#about", label: "Sobre" },
@@ -28,7 +29,7 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2">
+        <a href="#" className="flex items-center gap-2" onClick={() => trackClick("logo", "navbar")}>
           <span className="text-xl font-bold gradient-text">IA</span>
           <span className="hidden sm:block text-sm text-slate-400 font-mono">
             igor.amantino
@@ -39,7 +40,11 @@ export default function Navbar() {
         <ul className="hidden md:flex items-center gap-8">
           {links.map((l) => (
             <li key={l.href}>
-              <a href={l.href} className="nav-link text-sm font-medium">
+              <a
+                href={l.href}
+                className="nav-link text-sm font-medium"
+                onClick={() => trackClick(l.label, "navbar")}
+              >
                 {l.label}
               </a>
             </li>
@@ -48,6 +53,7 @@ export default function Navbar() {
 
         <a
           href="#contact"
+          onClick={() => trackClick("Contato (CTA)", "navbar")}
           className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-brand text-white text-sm font-semibold hover:bg-brand-dark transition-colors"
         >
           Contato
@@ -56,7 +62,10 @@ export default function Navbar() {
         {/* Mobile hamburger */}
         <button
           className="md:hidden text-slate-400 hover:text-white transition-colors"
-          onClick={() => setMenuOpen(!menuOpen)}
+          onClick={() => {
+            if (!menuOpen) trackClick("Abrir menu", "navbar_mobile");
+            setMenuOpen(!menuOpen);
+          }}
           aria-label="Menu"
         >
           <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -78,7 +87,10 @@ export default function Navbar() {
                 <a
                   href={l.href}
                   className="text-slate-300 hover:text-white text-sm font-medium block"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => {
+                    trackClick(l.label, "navbar_mobile");
+                    setMenuOpen(false);
+                  }}
                 >
                   {l.label}
                 </a>

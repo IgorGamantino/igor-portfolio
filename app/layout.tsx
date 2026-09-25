@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import FirebaseAnalytics from "@/components/FirebaseAnalytics";
 
 export const metadata: Metadata = {
   title: "Igor Amantino | Senior React Native & ReactJS Engineer",
@@ -29,7 +30,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className="scroll-smooth">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <FirebaseAnalytics />
+        {children}
+      </body>
     </html>
   );
 }

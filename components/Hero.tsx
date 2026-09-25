@@ -1,4 +1,5 @@
 "use client";
+import { trackClick } from "@/lib/firebase";
 
 export default function Hero() {
   return (
@@ -49,12 +50,14 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
             <a
               href="#experience"
+              onClick={() => trackClick("Ver Experiência", "hero")}
               className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-brand to-indigo-500 text-white font-semibold hover:opacity-90 transition-opacity shadow-lg shadow-brand/25 text-center"
             >
               Ver Experiência
             </a>
             <a
               href="#contact"
+              onClick={() => trackClick("Entrar em Contato", "hero")}
               className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white font-semibold hover:bg-white/10 transition-colors text-center"
             >
               Entrar em Contato
@@ -65,6 +68,7 @@ export default function Hero() {
           <div className="flex items-center gap-4 mt-10 justify-center lg:justify-start">
             <a
               href="https://www.linkedin.com/in/igor-amantinoipaussu/"
+              onClick={() => trackClick("LinkedIn", "hero", "https://www.linkedin.com/in/igor-amantinoipaussu/")}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-slate-500 hover:text-brand-light transition-colors text-sm"
@@ -77,6 +81,7 @@ export default function Hero() {
             <span className="w-px h-4 bg-white/10" />
             <a
               href="https://github.com/IgorGamantino"
+              onClick={() => trackClick("GitHub", "hero", "https://github.com/IgorGamantino")}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-slate-500 hover:text-brand-light transition-colors text-sm"

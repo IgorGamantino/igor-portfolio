@@ -1,3 +1,6 @@
+"use client";
+import { trackClick } from "@/lib/firebase";
+
 const contactLinks = [
   {
     icon: (
@@ -70,6 +73,7 @@ export default function Contact() {
             <a
               key={link.label}
               href={link.href}
+              onClick={() => trackClick(link.label, "contact", link.href)}
               target={link.href.startsWith("http") ? "_blank" : undefined}
               rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
               className="flex flex-col items-center gap-3 p-5 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:border-brand/30 hover:bg-brand/5 transition-all group card-hover text-center"
@@ -91,6 +95,7 @@ export default function Contact() {
         <div className="text-center">
           <a
             href="mailto:justin.amantino@gmail.com"
+            onClick={() => trackClick("Enviar mensagem", "contact", "mailto:justin.amantino@gmail.com")}
             className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-brand to-indigo-500 text-white font-bold text-base hover:opacity-90 transition-opacity shadow-xl shadow-brand/20"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
