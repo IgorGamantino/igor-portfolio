@@ -102,8 +102,9 @@ button[disabled] { opacity: .6; cursor: default; }
 #tela {
   width: 100%; max-width: 100%; aspect-ratio: 9 / 16; height: auto; display: block; border-radius: 6px;
   box-shadow: 0 1px 0 var(--line), 0 14px 30px -16px rgba(58, 48, 36, .5);
-  touch-action: none; cursor: grab; background: var(--card);
+  touch-action: auto; cursor: default; background: var(--card);
 }
+#tela.editavel { touch-action: none; cursor: grab; }
 #tela.dragging { cursor: grabbing; }
 .drag-hint { margin: 0; text-align: center; font-style: italic; color: var(--muted); font-size: 1rem; }
 .controls { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
@@ -416,6 +417,7 @@ async function carregar(file) {
       });
     }
     foto = img; off = { x: 0, y: 0 };
+    tela.classList.add("editavel");
     desenhar();
     btnSalvar.disabled = false;
     document.getElementById("dragHint").hidden = false;
