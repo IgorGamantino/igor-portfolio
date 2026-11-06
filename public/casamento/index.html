@@ -446,7 +446,7 @@ tela.addEventListener("pointermove", e => {
 });
 ["pointerup", "pointercancel"].forEach(t => tela.addEventListener(t, () => { arrastando = null; tela.classList.remove("dragging"); }));
 
-let fotoPronta = null, timerFoto = null;
+var fotoPronta = null, timerFoto = null;
 function prepararFoto() {
   fotoPronta = null;
   if (!foto) return;
